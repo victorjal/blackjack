@@ -17,6 +17,7 @@ let puntosJugador = 0,
 const btnPedir = document.querySelector('#btnPedir');
 
 const divCartasJugador = document.querySelector('#jugador-cartas');
+const divCartasComputadora = document.querySelector('#computadora-cartas');
 const puntosHTML = document.querySelectorAll('small');
 
 // Esta funcion crea una nueva baraja
@@ -63,6 +64,26 @@ const valorCarta = (carta) => {
             : valor * 1;
 
 }
+
+// Turno de la computadora
+const turnoComputadora = ( puntosMinimos ) => {
+
+    // do {        
+    const carta = pedirCarta();
+
+    puntosComputadora = puntosComputadora + valorCarta( carta );
+    puntosHTML[1].innerText = puntosComputadora;
+    
+    // <img class="carta" src="assets/cartas/2C.png">\
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${ carta }.png`;  // 2H
+    imgCarta.classList.add('carta');
+    divCartasJugador.append( imgCarta );
+    // } while ();
+
+
+};
+
 
 // Eventos
 btnPedir.addEventListener('click', () => {
